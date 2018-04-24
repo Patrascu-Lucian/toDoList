@@ -18,6 +18,7 @@
   &__task-list {
     & > li {
       list-style: none;
+      background-color: $light-grey-3;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -70,7 +71,7 @@
       color: inherit;
       padding: 1.5rem 2rem;
       border-radius: 3px;
-      background-color: rbga(#fff, .5);
+      background-color: $light-grey-3;
       border: none;
       border-bottom: 1px solid $light-grey-1;
       width: 90%;

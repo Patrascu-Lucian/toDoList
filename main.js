@@ -51,30 +51,39 @@ function getTasks() {
 
 // Add Task
 function addTask(e) {
-  if(taskInput.value === '') {
-    alert('Add a task');
+  // Add a regular expression to make sure that there is at least one letter and at least 2 characters in the string
+  let regex = /^(?=.*[a-zA-Z]).{2,}$/;
+
+  // test regex condition
+  if(regex.test(taskInput.value)) {
+    console.log(typeof taskInput.value);
+    // Create li element
+    const li = document.createElement('li');
+    // Add class
+    li.className = 'todo-list__list-item';
+    // Create text node and append to li
+    li.appendChild(document.createTextNode(taskInput.value));
+    // Create new link element
+    const link = document.createElement('a');
+    // Add class
+    link.className = 'todo-list__delete-item';
+    // Add icon html
+    link.innerHTML = '<span class="todo-list__close-btn"></span>';
+    // Append the link to li
+    li.appendChild(link);
+
+    // Append li to ul
+    taskList.appendChild(li);
+
+    // Store in LS
+    storeTaskInLocalStorage(taskInput.value);
+
+  // Handling errors
+  } else if(taskInput.value.length < 2){
+    alert('You must insert at least 2 characters');
+  } else {
+    alert('Please add a valid task');
   }
-
-  // Create li element
-  const li = document.createElement('li');
-  // Add class
-  li.className = 'todo-list__list-item';
-  // Create text node and append to li
-  li.appendChild(document.createTextNode(taskInput.value));
-  // Create new link element
-  const link = document.createElement('a');
-  // Add class
-  link.className = 'todo-list__delete-item';
-  // Add icon html
-  link.innerHTML = '<span class="todo-list__close-btn"></span>';
-  // Append the link to li
-  li.appendChild(link);
-
-  // Append li to ul
-  taskList.appendChild(li);
-
-  // Store in LS
-  storeTaskInLocalStorage(taskInput.value);
 
   // Clear input
   taskInput.value = '';
@@ -99,6 +108,7 @@ function storeTaskInLocalStorage(task) {
 // Remove Task
 function removeTask(e) {
   if(e.target.parentElement.classList.contains('todo-list__delete-item')) {
+    console.log(e.target.parentElement.parentElement.textContent);
     if(confirm('Are You Sure?')) {
       e.target.parentElement.parentElement.remove();
 
@@ -121,8 +131,6 @@ function removeTaskFromLocalStorage(taskItem) {
     if(taskItem.textContent === task){
       tasks.splice(index, 1);
     }
-    console.log(taskItem.textContent);
-    console.log(task);
   });
 
   localStorage.setItem('tasks', JSON.stringify(tasks));

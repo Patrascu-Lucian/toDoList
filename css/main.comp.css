@@ -65,6 +65,7 @@ body {
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); }
   .todo-list__task-list > li {
     list-style: none;
+    background-color: #f5f5f5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,7 +104,7 @@ body {
       color: inherit;
       padding: 1.5rem 2rem;
       border-radius: 3px;
-      background-color: rbga(#fff, 0.5);
+      background-color: #f5f5f5;
       border: none;
       border-bottom: 1px solid #aaa;
       width: 90%;

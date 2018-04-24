@@ -1,5 +1,5 @@
 // COLOR VARIABLES
-$color-primary: #1cb956;
+$color-primary: #14e672;
 $color-primary-dark: #0e6d56;
 
 $color-secondary: #296b56;
@@ -32,6 +32,7 @@ $screen-xs: 25em;    // 400px;
 
 html {
     box-sizing: border-box;
+    min-height: 100vh;
     font-size: 62.5%;         // 10px/16px = 62.5% => 1rem = 10px
 
     @media only screen and(max-width: $screen-s) {
@@ -54,6 +55,8 @@ html {
 body {
     font-family: $font-primary;
     color: $dark-grey-2;
+
+    background-image: linear-gradient(to bottom right, $color-primary, $color-primary-dark);
     font-weight: 300;
     line-height: 1.6;
 }

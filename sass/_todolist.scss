@@ -11,6 +11,8 @@
     width: 30rem;
     margin: 0 auto;
     border: 1px solid black;
+    background-color: $light-grey-2;
+    box-shadow: 0 2rem 4rem rgba(#000, .4);
   }
 
   &__task-list {

@@ -1,0 +1,59 @@
+// COLOR VARIABLES
+$color-primary: #1cb956;
+$color-primary-dark: #0e6d56;
+
+$color-secondary: #296b56;
+
+$light-grey-1: #aaa;
+$light-grey-2: #eee;
+
+$dark-grey-1: #666;
+$dark-grey-2: #333;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-secondary: 'Josefin Sans', sans-serif;
+$font-size-n: 1.6rem;
+
+// RESPONSIVE BREAKPOINTS
+$screen-xxl: 137.5em;    // 2200px
+$screen-xl: 112.5em;    // 1800px;
+$screen-l: 87.5em;    // 1400px;
+$screen-s: 31.25em;    // 500px;
+$screen-xs: 25em;    // 400px;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;         // 10px/16px = 62.5% => 1rem = 10px
+
+    @media only screen and(max-width: $screen-s) {
+        font-size: 50% // 1rem = 8px
+    }
+
+    @media only screen and(min-width: $screen-l) {
+        font-size: 87.5% // 1rem = 14px
+    }
+
+    @media only screen and(min-width: $screen-xl) {
+        font-size: 100% // 1rem = 16px
+    }
+
+    @media only screen and(min-width: $screen-xxl) {
+        font-size: 125% // 1rem = 20px
+    }
+}
+
+body {
+    font-family: $font-primary;
+    color: $dark-grey-2;
+    font-weight: 300;
+    line-height: 1.6;
+}

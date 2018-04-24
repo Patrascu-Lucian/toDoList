@@ -1,0 +1,100 @@
+.todo-list {
+  font-size: $font-size-n;
+  margin: 5vw auto;
+  width: 50rem;
+
+  @media only screen and(max-width: $screen-s) {
+    width: 32rem;
+  }
+
+  &__container{
+    width: 30rem;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
+
+  &__task-list {
+    & > li {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $dark-grey-1;
+      padding-left: 1rem;
+      animation: fadeIn .5s;
+    }
+  }
+
+
+  &__close-btn {
+    background-color: red;
+    color: $light-grey-2;
+    line-height: 1;
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 100%;
+    border-radius: 1px;
+    font-weight: 800;
+    border-left: 1px solid $dark-grey-1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "\00D7";
+    }
+    &:hover{
+      cursor: pointer;  
+      background-color: darken(red, 10%);
+    }
+  }
+
+  &__clear-btn {
+    margin: 5rem 0;
+    text-align: center;
+  }
+
+  &__form {
+    margin: 5rem 2rem;
+    display: flex;
+    justify-content: center;
+
+    &__input {
+      flex: 1;
+
+      font-size: 1.5rem;
+      font-family: inherit;
+      color: inherit;
+      padding: 1.5rem 2rem;
+      border-radius: 3px;
+      background-color: rbga(#fff, .5);
+      border: none;
+      border-bottom: 1px solid $light-grey-1;
+      width: 90%;
+      display: block;
+      transition: all .3s;
+
+      &:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(#000, .1);
+          border-bottom: 1px solid green;
+      }
+
+      &:focus:invalid {
+          border-bottom: 1px solid red;
+      }
+
+      &::-webkit-input-placeholder {
+          color: $dark-grey-1;
+      }
+      &::input-placeholder {
+        color: $dark-grey-1;
+     }
+    }
+
+    &__submit-btn {
+      margin-left: -3px;
+    }
+  }
+}

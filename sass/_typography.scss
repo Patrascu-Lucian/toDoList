@@ -1,0 +1,25 @@
+.heading-1 {
+  font-size: 7rem;
+  text-align: center;
+
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  font-weight: 100;
+
+  @media only screen and(max-width: $screen-s) {
+    font-size: 5rem;
+    letter-spacing: .5rem;
+  }
+}
+
+.heading-2 {
+  font-size: 3rem;
+  text-align: center;
+  display: block;
+  font-weight: 300;
+
+  background-color: $color-primary;
+
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+}

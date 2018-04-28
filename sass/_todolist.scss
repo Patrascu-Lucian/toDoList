@@ -8,16 +8,28 @@
   }
 
   &__container{
+    position: relative;
     width: 30rem;
     margin: 0 auto;
     border: 1px solid black;
     background-color: $light-grey-2;
     box-shadow: 0 2rem 4rem rgba(#000, .4);
+
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__task-list {
+    margin-bottom: auto;
+    // & > :nth-child(1) {
+    //   border-top: 1px solid $dark-grey-1;
+    // }
     & > li {
       list-style: none;
+      position: relative;
       background-color: $light-grey-3;
       display: flex;
       justify-content: space-between;
@@ -56,6 +68,7 @@
   &__clear-btn {
     margin: 5rem 0;
     text-align: center;
+
   }
 
   &__form {
@@ -98,6 +111,40 @@
 
     &__submit-btn {
       margin-left: -3px;
+    }
+
+  }
+
+  // ERRORS
+
+  &__error {
+    
+    &--danger,
+    &--success,
+    &--warning{
+      position: absolute;
+      margin: .5rem;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      text-align: center;
+      padding: .5rem 0;
+      opacity: 0;
+      transition: all .2s;
+      animation: fadeIn .2s;
+    }
+
+    &--danger{
+      background-color: $danger;
+      color: $light-grey-2;
+    }
+
+    &--success{
+      background-color: $color-primary;
+    }
+
+    &--warning {
+      background-color: $warning;
     }
   }
 }

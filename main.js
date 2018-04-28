@@ -56,8 +56,7 @@ function addTask(e) {
 
   // test regex condition
   if(regex.test(taskInput.value)) {
-    console.log(typeof taskInput.value);
-    // Create li element
+     // Create li element
     const li = document.createElement('li');
     // Add class
     li.className = 'todo-list__list-item';
@@ -78,11 +77,14 @@ function addTask(e) {
     // Store in LS
     storeTaskInLocalStorage(taskInput.value);
 
+    // Show success message
+    showMessage('Task added to list', 'success');
+
   // Handling errors
   } else if(taskInput.value.length < 2){
-    alert('You must insert at least 2 characters');
+    showMessage('You must insert at least 2 characters', 'warning');
   } else {
-    alert('Please add a valid task');
+    showMessage('Please insert a valid task!', 'warning');
   }
 
   // Clear input
@@ -108,13 +110,13 @@ function storeTaskInLocalStorage(task) {
 // Remove Task
 function removeTask(e) {
   if(e.target.parentElement.classList.contains('todo-list__delete-item')) {
-    console.log(e.target.parentElement.parentElement.textContent);
-    if(confirm('Are You Sure?')) {
+    confirmDeletion('Are you Sure?', function() {
+      console.log('got here');
       e.target.parentElement.parentElement.remove();
 
       // Remove from LS
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
-    }
+    });
   }
 }
 
@@ -138,18 +140,57 @@ function removeTaskFromLocalStorage(taskItem) {
 
 // Clear Tasks
 function clearTasks() {
-  // taskList.innerHTML = '';
-  if(confirm('Are You Sure?')) {
-    // Faster
+
+  confirmDeletion('Are you Sure?', function() {
+
     while(taskList.firstChild) {
       taskList.removeChild(taskList.firstChild);
     }
     // Clear from LS
     clearTasksFromLocalStorage();
-  }
+  });
 }
 
 // Clear Tasks from LS
 function clearTasksFromLocalStorage() {
     localStorage.clear();
+}
+
+// SHOW ERROR FUNCTION
+function showMessage(message, type) {
+
+  const element = `<p style="opacity:1" class="todo-list__error--${type}">${message}</p>`;
+
+  form.insertAdjacentHTML('beforeBegin', element);
+
+  setTimeout(function(){
+    form.previousElementSibling.style.opacity = "0";
+    setTimeout(function(){
+      form.previousElementSibling.remove();
+    },200);
+  },3000);
+}
+
+// CONFIRM DELETION FUNCTION
+function confirmDeletion(message, callback) {
+  const confirmElement = `
+      <div id="confirm-del" class="confirm-del">
+        <div class="confirm-del__container">
+          <p>${message}</p>
+          <button id="confirm-yes" class="btn">Yes</button>
+          <button id="confirm-no" class="btn">No</button>
+        </div>
+      </div>`;
+
+  document.body.insertAdjacentHTML('afterBegin', confirmElement);
+
+  document.getElementById('confirm-del').addEventListener('click', function(e){
+    console.log(e.target.textContent === 'Yes');
+    if(e.target.textContent === 'Yes'){
+      this.remove();
+      callback();
+    } else if(e.target.textContent === 'No'){
+      this.remove();
+    }
+  });
 }

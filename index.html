@@ -9,10 +9,17 @@
   <title>To Do List</title>
 </head>
 <body>
+  <!-- <div id="confirm-del" class="confirm-del">
+    <div class="confirm-del__container">
+      <p>Are you sure?</p>
+      <button id="confirm-yes" class="btn">Yes</button>
+      <button id="confirm-no" class="btn">No</button>
+    </div>
+  </div> -->
+
   <main class="todo-list">
     <h1 class="heading-1">To Do List</h1>
     <div class="todo-list__container">
-
       <h2 class="heading-2 bb-xs">Task List</h2>
       <ul id="task-list" class="todo-list__task-list"></ul>
 
@@ -20,12 +27,11 @@
        <a href="#" id="clear-tasks" class="btn">Clear All Tasks</a>
       </div>
 
-      <h2 class="heading-2 bt-xs bb-xs">Add To List</h2>
+      <h2 class="heading-2 bt-xs bb-xs">Add To List</h2> 
       <form id="task-form" class="todo-list__form">
         <input type="text" name="task" id="task" class="todo-list__form__input" required placeholder="Enter a task...">
         <input type="submit" value="Add" class="btn todo-list__form__submit-btn">
       </form>
-
     </div>
   </main>
 

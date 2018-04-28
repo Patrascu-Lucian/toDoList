@@ -30,5 +30,10 @@
       transform: translateY(-1px);
       box-shadow: 0 .5rem 1rem rgba(#000, .2);
   }
+
+  &--light {
+    background-color: $color-primary;
+    color: $dark-grey-2;
+  }
  
 }

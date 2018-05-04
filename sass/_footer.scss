@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  width: 30rem;
+  margin: 3rem auto;
+  justify-content: space-between;
+  color: $light-grey-3;
+
+  font-size: 1.2rem;
+  &__left {
+
+  }
+
+  &__right {
+
+  }
+
+  &__link,
+  &__link:visited
+  &__link:active {
+    text-decoration: none;
+    text-transform: uppercase; 
+    color: $color-primary;
+    transition: all .2s;
+  }
+
+  &__link:hover{
+    color: darken($color-primary, 35%);
+  }
+}
